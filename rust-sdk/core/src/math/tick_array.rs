@@ -6,11 +6,8 @@ pub struct TickArraySequence<const SIZE: usize> {
     tick_spacing: u16,
 }
 
-impl <const SIZE: usize> TickArraySequence<SIZE> {
-    pub fn new(
-        tick_arrays: [TickArrayFacade; SIZE],
-        tick_spacing: u16,
-    ) -> Self {
+impl<const SIZE: usize> TickArraySequence<SIZE> {
+    pub fn new(tick_arrays: [TickArrayFacade; SIZE], tick_spacing: u16) -> Self {
         let mut tick_arrays = tick_arrays;
         tick_arrays.sort_by(|a, b| a.start_tick_index.cmp(&b.start_tick_index));
 
@@ -18,7 +15,8 @@ impl <const SIZE: usize> TickArraySequence<SIZE> {
         for (i, tick_array) in tick_arrays.iter().enumerate() {
             let next_tick_array = tick_arrays.get(i + 1);
             if let Some(next_tick_array) = next_tick_array {
-                let first_second_diff = (next_tick_array.start_tick_index - tick_array.start_tick_index).unsigned_abs();
+                let first_second_diff =
+                    (next_tick_array.start_tick_index - tick_array.start_tick_index).unsigned_abs();
                 if first_second_diff != required_tick_array_spacing {
                     panic!("tick arrays are not evenly spaced");
                 }

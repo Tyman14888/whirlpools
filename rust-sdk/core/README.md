@@ -1,1 +1,1 @@
-# Orca Whirlpools Typescript Core
+# Orca Whirlpools Rust Core

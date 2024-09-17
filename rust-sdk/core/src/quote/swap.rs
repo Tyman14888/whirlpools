@@ -53,13 +53,16 @@ pub fn swap_quote_by_input_token(
     };
     let token_in_after_fee = adjust_amount(token_in.into(), transfer_fee_in.into(), false);
 
-    let tick_sequence = TickArraySequence::new([
-        tick_array_minus_2,
-        tick_array_minus_1,
-        tick_array_0,
-        tick_array_plus_1,
-        tick_array_plus_2,
-    ], whirlpool.tick_spacing);
+    let tick_sequence = TickArraySequence::new(
+        [
+            tick_array_minus_2,
+            tick_array_minus_1,
+            tick_array_0,
+            tick_array_plus_1,
+            tick_array_plus_2,
+        ],
+        whirlpool.tick_spacing,
+    );
 
     let swap_result = compute_swap(
         token_in_after_fee.into(),
@@ -141,13 +144,16 @@ pub fn swap_quote_by_output_token(
     let token_out_before_fee =
         inverse_adjust_amount(token_out.into(), transfer_fee_out.into(), false);
 
-    let tick_sequence = TickArraySequence::new([
-        tick_array_minus_2,
-        tick_array_minus_1,
-        tick_array_0,
-        tick_array_plus_1,
-        tick_array_plus_2,
-    ], whirlpool.tick_spacing);
+    let tick_sequence = TickArraySequence::new(
+        [
+            tick_array_minus_2,
+            tick_array_minus_1,
+            tick_array_0,
+            tick_array_plus_1,
+            tick_array_plus_2,
+        ],
+        whirlpool.tick_spacing,
+    );
 
     let swap_result = compute_swap(
         token_out_before_fee.into(),
