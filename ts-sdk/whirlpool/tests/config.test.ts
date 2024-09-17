@@ -7,10 +7,8 @@ import {
   setDefaultFunder,
   setDefaultSlippageTolerance,
   setSolWrappingStrategy,
-  setSupportedTickSpacings,
   setWhirlpoolsConfig,
   SOL_WRAPPING_STRATEGY,
-  SUPPORTED_TICK_SPACINGS,
   WHIRLPOOLS_CONFIG_ADDRESS,
   WHIRLPOOLS_CONFIG_EXTENSION_ADDRESS,
 } from "../src/config";
@@ -26,11 +24,6 @@ describe("Configuration", () => {
     setWhirlpoolsConfig(DEFAULT_ADDRESS);
     assert.strictEqual(WHIRLPOOLS_CONFIG_ADDRESS, DEFAULT_ADDRESS);
     assert.strictEqual(WHIRLPOOLS_CONFIG_EXTENSION_ADDRESS, "");
-  });
-
-  it("Should be able to set supported tick spacings", () => {
-    setSupportedTickSpacings([10, 20]);
-    assert.deepStrictEqual(SUPPORTED_TICK_SPACINGS, [10, 20]);
   });
 
   it("Should be able to set default funder to an address", () => {
